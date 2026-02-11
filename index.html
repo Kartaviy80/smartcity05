@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дніпро СМАРТ СІТІ - Платформа міських сервісів</title>
+  <meta name="description" content="Платформа міських сервісів для взаємодії з громадою міста Дніпро">
+  <meta property="og:title" content="Дніпро СМАРТ СІТІ">
+  <meta property="og:description" content="Платформа міських сервісів для взаємодії з громадою міста Дніпро">
+  <style>
+    @font-face {
+      font-family: 'DniproCity';
+      src: url('./fonts/DniproCity-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'DniproCity';
+      src: url('./fonts/DniproCity-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DniproCity', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+      color: #1f2937;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    input { font-family: inherit; }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    input[type="search"]::-webkit-search-cancel-button { display: none; }
+
+    /* Animations */
+    @keyframes float-slow {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -20px) scale(1.05); }
+      50% { transform: translate(-20px, 30px) scale(0.95); }
+      75% { transform: translate(20px, 20px) scale(1.02); }
+    }
+    @keyframes float-medium {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-40px, 20px) scale(1.08); }
+      66% { transform: translate(30px, -30px) scale(0.92); }
+    }
+    @keyframes float-fast {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(25px, -25px) scale(1.1); }
+    }
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.15; transform: scale(1); }
+      50% { opacity: 0.25; transform: scale(1.15); }
+    }
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+    }
+    @keyframes drift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(15px, -10px) rotate(2deg); }
+      50% { transform: translate(-10px, 15px) rotate(-1deg); }
+      75% { transform: translate(-15px, -5px) rotate(1deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 10px rgba(59,130,246,0.3), 0 0 20px rgba(59,130,246,0.1); opacity: 0.3; }
+      50% { box-shadow: 0 0 20px rgba(59,130,246,0.5), 0 0 40px rgba(59,130,246,0.2); opacity: 0.6; }
+    }
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 0.8; transform: scale(1); }
+    }
+    @keyframes single-pulse {
+      0% { opacity: 0; box-shadow: 0 0 8px rgba(147,197,253,0.15); transform: scale(0.9); }
+      20% { opacity: 0.4; box-shadow: 0 0 20px rgba(147,197,253,0.35), 0 0 35px rgba(147,197,253,0.15); transform: scale(1); }
+      50% { opacity: 0.4; box-shadow: 0 0 25px rgba(147,197,253,0.4), 0 0 40px rgba(147,197,253,0.2); transform: scale(1); }
+      75% { opacity: 0.25; box-shadow: 0 0 18px rgba(147,197,253,0.25), 0 0 30px rgba(147,197,253,0.1); transform: scale(1.02); }
+      100% { opacity: 0; box-shadow: 0 0 10px rgba(147,197,253,0.05); transform: scale(1.05); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .anim-float-slow { animation: float-slow 20s ease-in-out infinite; }
+    .anim-float-medium { animation: float-medium 15s ease-in-out infinite; }
+    .anim-float-fast { animation: float-fast 10s ease-in-out infinite; }
+    .anim-pulse-slow { animation: pulse-slow 12s ease-in-out infinite; }
+    .anim-shimmer-1 { animation: shimmer 8s ease-in-out infinite; }
+    .anim-shimmer-2 { animation: shimmer 12s ease-in-out infinite 2s; }
+    .anim-shimmer-3 { animation: shimmer 10s ease-in-out infinite 4s; }
+    .anim-shimmer-4 { animation: shimmer 14s ease-in-out infinite 1s; }
+    .anim-shimmer-5 { animation: shimmer 9s ease-in-out infinite 3s; }
+    .anim-drift-1 { animation: drift 25s ease-in-out infinite; }
+    .anim-drift-2 { animation: drift 30s ease-in-out infinite 5s; }
+    .anim-drift-3 { animation: drift 20s ease-in-out infinite 10s; }
+    .anim-sparkle-1 { animation: sparkle 4s ease-in-out infinite; }
+    .anim-sparkle-2 { animation: sparkle 5s ease-in-out infinite 1.5s; }
+    .anim-sparkle-3 { animation: sparkle 6s ease-in-out infinite 3s; }
+    .anim-sparkle-4 { animation: sparkle 4.5s ease-in-out infinite 2s; }
+    .anim-sparkle-5 { animation: sparkle 5.5s ease-in-out infinite 0.5s; }
+    .anim-single-pulse { animation: single-pulse 10s ease-in-out forwards; }
+
+    /* Layout */
+    .app-wrapper {
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      background-image: url('./background.png');
+      background-position: center top;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .gradient-overlay {
+      position: absolute; inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to bottom, transparent 40%, rgba(30,80,150,0.35) 100%);
+    }
+    .bg-layer {
+      position: absolute; inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-square {
+      position: absolute;
+      border-radius: 2px;
+    }
+    .bg-sparkle {
+      position: absolute;
+      border-radius: 9999px;
+    }
+    .glow-box {
+      position: absolute;
+      border: 1px solid rgba(147,197,253,0.4);
+      border-radius: 6px;
+    }
+    .box-img {
+      position: absolute;
+      top: 64px;
+      right: 16px;
+      width: 192px;
+      max-width: 40%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .ambient-orb {
+      position: absolute;
+      border-radius: 9999px;
+    }
+    .content-wrapper {
+      position: relative;
+      z-index: 10;
+    }
+    .container {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Hero */
+    .hero-section { position: relative; padding: 3rem 0 1.5rem; }
+    .hero-pill {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.625rem 1.5rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.6);
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: background 0.3s;
+    }
+    .hero-pill:hover { background: rgba(255,255,255,0.15); }
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: white;
+    }
+    .hero-gradient {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+      background-image: linear-gradient(90deg, #3b82f6 0%, #06b6d4 50%, #22d3ee 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 0.875rem;
+      color: #94a3b8;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+      white-space: nowrap;
+    }
+    .hero-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      padding: 0.625rem 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: white;
+      text-align: center;
+      transition: all 0.3s;
+      line-height: 1.25;
+    }
+    .hero-btn:hover { transform: translateY(-2px); }
+    @media (min-width: 1024px) {
+      .hero-btn { padding: 0.625rem 1.25rem; font-size: 1.125rem; white-space: nowrap; }
+    }
+    .hero-btn-primary {
+      background: #2563eb;
+      box-shadow: 0 4px 6px -1px rgba(59,130,246,0.3);
+    }
+    .hero-btn-primary:hover { background: #1d4ed8; box-shadow: 0 10px 15px -3px rgba(59,130,246,0.4); }
+    .hero-btn-glass {
+      background: rgba(6,182,212,0.25);
+      backdrop-filter: blur(20px) saturate(120%);
+      -webkit-backdrop-filter: blur(20px) saturate(120%);
+      border: 1px solid rgba(6,182,212,0.4);
+    }
+    .hero-btn-glass:hover { border-color: rgba(34,211,238,0.6); }
+
+    /* Search */
+    .search-section { padding: 1rem 0; }
+    .search-wrapper {
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 2px;
+      max-width: 42rem;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      transition: all 0.3s;
+    }
+    .search-wrapper:hover { border-color: rgba(255,255,255,0.5); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+    .search-wrapper.focused {
+      border-color: rgba(96,165,250,0.6);
+      box-shadow: 0 20px 25px -5px rgba(59,130,246,0.2);
+      background: rgba(255,255,255,0.6);
+    }
+    .search-inner { position: relative; }
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      color: #9ca3af;
+      transition: color 0.3s;
+    }
+    .search-wrapper.focused .search-icon { color: #3b82f6; }
+    .search-input {
+      width: 100%;
+      padding: 0.5rem 1rem 0.5rem 3rem;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 1.125rem;
+      color: #374151;
+      border-radius: 0.5rem;
+      height: 2.75rem;
+    }
+    .search-input::placeholder { color: #9ca3af; }
+
+    /* Categories */
+    .categories-section { padding: 1.5rem 0; }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 0.125rem;
+    }
+    .section-subtitle {
+      font-size: 1rem;
+      color: #4b5563;
+      margin-bottom: 1rem;
+    }
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    .category-card {
+      border-radius: 1rem;
+      padding: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 2px solid transparent;
+      overflow: hidden;
+    }
+    .category-card:hover { transform: translateY(-4px); }
+    .category-card.selected { transform: translateY(-4px); }
+    .category-card-image-wrap {
+      margin: -0.75rem -0.75rem 0.5rem -0.75rem;
+      overflow: hidden;
+      border-radius: 1rem 1rem 0 0;
+      width: calc(100% + 1.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+    }
+    .category-card-image-wrap img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      max-height: 160px;
+    }
+    .category-card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+    }
+    .category-card-title {
+      font-weight: 700;
+      color: #1f2937;
+      font-size: 1rem;
+      line-height: 1.2;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+    .category-card-arrow {
+      width: 16px;
+      height: 16px;
+      color: #9ca3af;
+      flex-shrink: 0;
+    }
+
+    /* Services */
+    .services-section { padding: 1.5rem 0 3rem; }
+    .services-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .services-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1f2937;
+    }
+    .back-btn {
+      color: #2563eb;
+      font-size: 1rem;
+      font-weight: 500;
+      display: none;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+    .back-btn.visible { display: flex; }
+    .back-btn svg { width: 20px; height: 20px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .service-card {
+      border-radius: 1rem;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      min-height: 100px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(96,165,250,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .service-card:hover {
+      transform: translateY(-4px) !important;
+      background: rgba(255,255,255,0.25);
+    }
+    .service-card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .service-card-icon svg { width: 28px; height: 28px; }
+    .service-card-content { flex: 1; min-width: 0; }
+    .service-card-title {
+      font-weight: 600;
+      color: #1f2937;
+      font-size: 1.125rem;
+      line-height: 1.2;
+    }
+    .service-card-desc {
+      font-size: 1rem;
+      color: #4b5563;
+      line-height: 1.3;
+      margin-top: 4px;
+    }
+    .service-card-arrow {
+      width: 24px;
+      height: 24px;
+      color: #9ca3af;
+      flex-shrink: 0;
+    }
+    .empty-state {
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+    .empty-state svg { width: 48px; height: 48px; color: #9ca3af; margin: 0 auto 0.75rem; }
+    .empty-state p { color: #4b5563; }
+    .empty-state .sub { font-size: 0.875rem; color: #6b7280; }
+
+    /* Footer */
+    footer {
+      background: #0a1628;
+      color: white;
+    }
+    .footer-line {
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6 0%, #3b82f6 35%, #facc15 50%, #3b82f6 65%, #3b82f6 100%);
+    }
+    .footer-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 2.5rem 1rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .footer-brand img { width: 48px; height: 56px; object-fit: contain; }
+    .footer-brand span { font-size: 1.875rem; font-weight: 700; line-height: 1.1; }
+    .footer-credit { color: #9ca3af; font-size: 1rem; }
+    .footer-heading { font-weight: 700; margin-bottom: 0.75rem; font-size: 1rem; letter-spacing: 0.05em; }
+    .footer-text { font-size: 1rem; color: #d1d5db; line-height: 1.6; }
+    .footer-text-sm { font-size: 0.875rem; color: #9ca3af; text-transform: uppercase; }
+    .footer-phone { font-size: 1.125rem; }
+    .footer-link { color: #60a5fa; transition: color 0.3s; display: block; margin-top: 0.5rem; font-size: 1rem; }
+    .footer-link:hover { color: #93c5fd; }
+
+    /* Scroll top button */
+    .scroll-top-btn {
+      position: fixed;
+      right: 1.5rem;
+      z-index: 50;
+      width: 48px;
+      height: 48px;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(59,130,246,0.2);
+      backdrop-filter: blur(16px) saturate(120%);
+      -webkit-backdrop-filter: blur(16px) saturate(120%);
+      box-shadow: 0 4px 20px rgba(59,130,246,0.15);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .scroll-top-btn.visible { opacity: 1; pointer-events: auto; }
+    .scroll-top-btn:hover {
+      border-color: rgba(255,255,255,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(59,130,246,0.25);
+      color: white;
+    }
+    .scroll-top-btn svg { width: 24px; height: 24px; }
+
+    .categories-hidden { opacity: 0; height: 0; overflow: hidden; pointer-events: none; transition: opacity 0.5s, height 0.5s; }
+    .categories-visible { opacity: 1; height: auto; transition: opacity 0.5s, height 0.5s; }
+
+    /* Responsive */
+    @media (min-width: 640px) {
+      .container { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .box-img { width: 224px; }
+    }
+    @media (min-width: 768px) {
+      .categories-grid { grid-template-columns: repeat(4, 1fr); }
+      .hero-subtitle { font-size: 1rem; }
+      .category-card-title { font-size: 1.125rem; }
+      .category-card-image-wrap img { max-height: 180px; }
+      .box-img { width: 256px; }
+      .footer-grid { grid-template-columns: repeat(3, 1fr); text-align: left; }
+      .footer-brand { justify-content: flex-start; }
+      .footer-right { text-align: right; }
+    }
+    @media (min-width: 1024px) {
+      .container { padding-left: 2rem; padding-right: 2rem; }
+      .hero-section { padding: 4rem 0 2rem; }
+      .hero-subtitle { font-size: 1.125rem; }
+      .hero-buttons { grid-template-columns: repeat(4, 1fr); max-width: 56rem; }
+      .box-img { right: 64px; width: 320px; }
+    }
+    @media (min-width: 1280px) {
+      .container { padding-left: 3rem; padding-right: 3rem; }
+      .hero-title, .hero-gradient { font-size: 4.5rem; }
+      .hero-subtitle { font-size: 1.25rem; }
+      .hero-gradient { margin-bottom: 1.25rem; }
+      .categories-grid { gap: 1rem; }
+      .category-card-title { font-size: 1.5rem; }
+      .category-card-image-wrap img { max-height: 220px; }
+      .box-img { right: 80px; width: 384px; }
+    }
+    @media (min-width: 1536px) {
+      .container { padding-left: 4rem; padding-right: 4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-wrapper">
+    <div class="gradient-overlay"></div>
+
+    <div class="bg-layer">
+      <div class="bg-square anim-shimmer-1 anim-drift-1" style="top:15%;left:10%;width:32px;height:32px;background:rgba(96,165,250,0.2)"></div>
+      <div class="bg-square anim-shimmer-2 anim-drift-2" style="top:25%;left:25%;width:24px;height:24px;background:rgba(34,211,238,0.25)"></div>
+      <div class="bg-square anim-shimmer-3 anim-drift-3" style="top:35%;left:8%;width:40px;height:40px;background:rgba(147,197,253,0.15)"></div>
+      <div class="bg-square anim-shimmer-4 anim-drift-1" style="top:55%;left:15%;width:20px;height:20px;background:rgba(56,189,248,0.2)"></div>
+      <div class="bg-square anim-shimmer-5 anim-drift-2" style="top:70%;left:5%;width:28px;height:28px;background:rgba(59,130,246,0.2)"></div>
+      <div class="bg-square anim-shimmer-2 anim-drift-3" style="top:20%;right:15%;width:24px;height:24px;background:rgba(103,232,249,0.2)"></div>
+      <div class="bg-square anim-shimmer-4 anim-drift-1" style="top:40%;right:8%;width:32px;height:32px;background:rgba(96,165,250,0.15)"></div>
+      <div class="bg-square anim-shimmer-1 anim-drift-2" style="top:60%;right:20%;width:20px;height:20px;background:rgba(125,211,252,0.25)"></div>
+      <div class="bg-square anim-shimmer-3 anim-drift-3" style="top:75%;right:10%;width:36px;height:36px;background:rgba(147,197,253,0.2)"></div>
+
+      <div class="bg-sparkle anim-sparkle-1" style="top:18%;left:30%;width:8px;height:8px;background:white"></div>
+      <div class="bg-sparkle anim-sparkle-2" style="top:32%;left:45%;width:6px;height:6px;background:#a5f3fc"></div>
+      <div class="bg-sparkle anim-sparkle-3" style="top:48%;left:12%;width:8px;height:8px;background:#bfdbfe"></div>
+      <div class="bg-sparkle anim-sparkle-4" style="top:65%;left:35%;width:6px;height:6px;background:white"></div>
+      <div class="bg-sparkle anim-sparkle-5" style="top:80%;left:22%;width:8px;height:8px;background:#bae6fd"></div>
+      <div class="bg-sparkle anim-sparkle-3" style="top:22%;right:35%;width:6px;height:6px;background:white"></div>
+      <div class="bg-sparkle anim-sparkle-1" style="top:45%;right:25%;width:8px;height:8px;background:#cffafe"></div>
+      <div class="bg-sparkle anim-sparkle-4" style="top:58%;right:40%;width:6px;height:6px;background:#dbeafe"></div>
+      <div class="bg-sparkle anim-sparkle-2" style="top:72%;right:30%;width:8px;height:8px;background:white"></div>
+
+      <div id="glowBoxes"></div>
+    </div>
+
+    <img src="./box.png" alt="" class="box-img">
+
+    <div class="bg-layer" style="z-index:0">
+      <div class="ambient-orb anim-float-slow" style="width:600px;height:600px;opacity:0.2;background:radial-gradient(circle,rgba(59,130,246,0.4) 0%,transparent 70%);top:10%;left:-10%;filter:blur(80px)"></div>
+      <div class="ambient-orb anim-float-medium" style="width:500px;height:500px;opacity:0.15;background:radial-gradient(circle,rgba(168,85,247,0.4) 0%,transparent 70%);top:40%;right:-5%;filter:blur(100px)"></div>
+      <div class="ambient-orb anim-float-fast" style="width:400px;height:400px;opacity:0.2;background:radial-gradient(circle,rgba(34,211,238,0.3) 0%,transparent 70%);bottom:20%;left:20%;filter:blur(60px)"></div>
+      <div class="ambient-orb anim-pulse-slow" style="width:350px;height:350px;opacity:0.15;background:radial-gradient(circle,rgba(16,185,129,0.3) 0%,transparent 70%);top:60%;right:30%;filter:blur(70px)"></div>
+    </div>
+
+    <div class="content-wrapper">
+      <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <div class="container">
+            <a href="./pro-dnipro.pdf" target="_blank" rel="noopener noreferrer" class="hero-pill">Про Дніпро</a>
+            <h1 class="hero-title">Дніпро</h1>
+            <h2 class="hero-gradient">СМАРТ СІТІ</h2>
+            <p class="hero-subtitle">Платформа міських сервісів для взаємодії з громадою</p>
+            <div class="hero-buttons">
+              <a href="https://dniprorada.gov.ua/" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-primary">Дніпровська міська рада</a>
+              <a href="https://ednipro.dniprorada.gov.ua/" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-glass">Завантажити єДніпро</a>
+              <a href="https://inforada.github.io/safecity/" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-glass">Безпечне місто</a>
+              <a href="https://hotline.dniprorada.gov.ua/" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-glass">Контакт-Центр</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section">
+          <div class="container">
+            <div class="search-wrapper" id="searchWrapper">
+              <div class="search-inner">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="search" id="searchInput" class="search-input" placeholder="Пошук послуг...">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories-section categories-visible" id="categoriesSection">
+          <div class="container">
+            <h2 class="section-title">Категорії</h2>
+            <p class="section-subtitle">Популярні напрями міських можливостей — оберіть те, що вам потрібно</p>
+            <div class="categories-grid" id="categoriesGrid"></div>
+          </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section" id="servicesSection">
+          <div class="container">
+            <div class="services-header">
+              <h2 class="services-title" id="servicesTitle">Популярне</h2>
+              <button class="back-btn" id="backButton" onclick="showPopular()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                Назад
+              </button>
+            </div>
+            <div class="services-grid" id="servicesGrid"></div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer>
+        <div class="footer-line"></div>
+        <div class="footer-inner">
+          <div class="footer-grid">
+            <div>
+              <div class="footer-brand">
+                <img src="./gerb.png" alt="Герб Дніпра">
+                <span>Дніпро</span>
+              </div>
+              <p class="footer-credit">Розроблено КП «ІНФО-РАДА-ДНІПРО»</p>
+            </div>
+            <div>
+              <h3 class="footer-heading">ГАРЯЧА ЛІНІЯ</h3>
+              <div class="footer-text">
+                <p class="footer-text-sm">ЦІЛОДОБОВА<br>ЄДИНА ГАРЯЧА ЛІНІЯ<br>ДЛЯ ЗВЕРНЕНЬ ГРОМАДЯН</p>
+                <p style="margin-top:0.75rem"><a href="tel:1530" class="footer-phone" style="color:#d1d5db;transition:color 0.3s">тел. 1530</a></p>
+                <a href="mailto:zvernennya@dmr.dp.ua" class="footer-link">zvernennya@dmr.dp.ua</a>
+              </div>
+            </div>
+            <div class="footer-right">
+              <h3 class="footer-heading">КОНТАКТИ</h3>
+              <div class="footer-text">
+                <p>49000, М. ДНІПРО,</p>
+                <p>просп. ДМИТРА ЯВОРНИЦЬКОГО, 75</p>
+                <a href="mailto:office@dniprorada.gov.ua" class="footer-link" style="margin-top:0.75rem">office@dniprorada.gov.ua</a>
+                <a href="mailto:office@dmr.dp.ua" class="footer-link" style="margin-top:0.25rem">office@dmr.dp.ua</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Вгору" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+  </div>
+
+  <script>
+    // SVG Icons
+    var ICONS = {
+      Building2: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>',
+      Shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>',
+      Phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+      MapPin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
+      FileText: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>',
+      Mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+      Users: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+      GraduationCap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>',
+      Bus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/></svg>',
+      BookOpen: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+      CreditCard: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>',
+      Briefcase: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>',
+      Clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+      Map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>',
+      Heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>',
+      Theater: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10s3-3 3-8"/><path d="M22 10s-3-3-3-8"/><path d="M10 2c0 4.4-3.6 8-8 8"/><path d="M14 2c0 4.4 3.6 8 8 8"/><path d="M2 10s2 2 2 5"/><path d="M22 10s-2 2-2 5"/><path d="M8 15h8"/><path d="M2 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"/><path d="M14 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"/></svg>',
+      HeartHandshake: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/><path d="m18 15-2-2"/><path d="m15 18-2-2"/></svg>',
+      BookMarked: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><polyline points="10 2 10 10 13 7 16 10 16 2"/></svg>',
+      Eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>',
+      Search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>',
+      ChevronRight: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>'
+    };
+
+    var categories = [
+      { id:1, title:"Адміністративні послуги", icon:"FileText", image:"./categories/poslugi.png", iconHex:"#3b82f6", borderColor:"rgba(96,165,250,0.5)", glowColor:"rgba(59,130,246,0.35)", selectedBg:"rgba(59,130,246,0.15)" },
+      { id:11, title:"Соціальні послуги", icon:"Heart", image:"./categories/poslugi.png", iconHex:"#8b5cf6", borderColor:"rgba(167,139,250,0.5)", glowColor:"rgba(139,92,246,0.35)", selectedBg:"rgba(139,92,246,0.15)" },
+      { id:2, title:"Освіта та навчання", icon:"GraduationCap", image:"./categories/education.png", iconHex:"#10b981", borderColor:"rgba(52,211,153,0.5)", glowColor:"rgba(16,185,129,0.35)", selectedBg:"rgba(16,185,129,0.15)" },
+      { id:3, title:"Медицина", icon:"Heart", image:"./categories/medicine.png", iconHex:"#f97316", borderColor:"rgba(251,146,60,0.5)", glowColor:"rgba(249,115,22,0.35)", selectedBg:"rgba(249,115,22,0.15)" },
+      { id:4, title:"Транспорт", icon:"Bus", image:"./categories/transport.png", iconHex:"#14b8a6", borderColor:"rgba(45,212,191,0.5)", glowColor:"rgba(20,184,166,0.35)", selectedBg:"rgba(20,184,166,0.15)" },
+      { id:5, title:"Підтримка під час війни", icon:"HeartHandshake", image:"./categories/war.png", iconHex:"#ef4444", borderColor:"rgba(248,113,113,0.5)", glowColor:"rgba(239,68,68,0.35)", selectedBg:"rgba(239,68,68,0.15)" },
+      { id:6, title:"Пам'ять", icon:"BookMarked", image:"./categories/pamiat.png", iconHex:"#ec4899", borderColor:"rgba(244,114,182,0.5)", glowColor:"rgba(236,72,153,0.35)", selectedBg:"rgba(236,72,153,0.15)" },
+      { id:7, title:"Культура", icon:"Theater", image:"./categories/culture.png", iconHex:"#f59e0b", borderColor:"rgba(245,158,11,0.5)", glowColor:"rgba(245,158,11,0.35)", selectedBg:"rgba(245,158,11,0.15)" },
+      { id:8, title:"Мапи і довідники", icon:"MapPin", image:"./categories/maps.png", iconHex:"#22c55e", borderColor:"rgba(74,222,128,0.5)", glowColor:"rgba(34,197,94,0.35)", selectedBg:"rgba(34,197,94,0.15)" },
+      { id:9, title:"Бізнес", icon:"Briefcase", image:"./categories/business.png", iconHex:"#06b6d4", borderColor:"rgba(34,211,238,0.5)", glowColor:"rgba(6,182,212,0.35)", selectedBg:"rgba(6,182,212,0.15)" },
+      { id:10, title:"Повідомити про корупцію", icon:"Shield", image:"./categories/corupcia.png", iconHex:"#a855f7", borderColor:"rgba(168,85,247,0.5)", glowColor:"rgba(168,85,247,0.35)", selectedBg:"rgba(168,85,247,0.15)" }
+    ];
+
+    var servicesByCategory = {
+      popular: [
+        { id:1, title:"єДніпро", description:"Усі міські сервіси в одному мобільному застосунку", icon:"Building2", url:"https://ednipro.dniprorada.gov.ua/" },
+        { id:2, title:"Безпечне місто", description:"Моніторинг 24/7, запит на відео з камер спостереження", icon:"Shield", url:"https://inforada.github.io/safecity/" },
+        { id:3, title:"Контакт-Центр міста Дніпра", description:"Єдина система звернень щодо аварійних ситуацій", icon:"Phone", url:"https://hotline.dniprorada.gov.ua/" },
+        { id:4, title:"Мапа укриттів", description:"Швидкий пошук найближчого сховища", icon:"MapPin", url:"https://dniprotransparentcities.github.io/shelter/" },
+        { id:5, title:"Мапа пунктів незламності", description:"Знайти локацію поруч за кілька кліків", icon:"MapPin", url:"https://dniprotransparentcities.github.io/InvincibilityPoints/" },
+        { id:6, title:"Документи міської ради", description:"Пошук проєктів та прийнятих документів", icon:"FileText", url:"https://dniprorada.gov.ua/uk/page/dokumenti-miskoi-radi#gsc.tab=0" },
+        { id:7, title:"Електронні звернення", description:"Подати звернення онлайн", icon:"Mail", url:"https://gromada.dniprorada.gov.ua/" },
+        { id:8, title:"Онлайн реєстрація на сесію міської ради", description:"Реєстрація для участі в засіданнях", icon:"Users", url:"https://rada.dniprorada.gov.ua/" },
+        { id:9, title:"Портал відкритих даних", description:"Доступ до відкритих даних міста", icon:"FileText", url:"https://data.dniprorada.gov.ua/" }
+      ],
+      1: [
+        { id:1, title:"ЦНАП м. Дніпра", description:"Адміністративні послуги онлайн", icon:"Building2", url:"https://cnap.dniprorada.gov.ua/online-services/" },
+        { id:2, title:"Електронна черга", description:"Запис до ЦНАП", icon:"Clock", url:"https://dniprorada.qsolutions.com.ua:47502/index" },
+        { id:3, title:"Ритуальні послуги", description:"Реєстрація місця поховання", icon:"FileText", url:"https://ritual.dniprorada.gov.ua/#bron" },
+        { id:4, title:"Інспекція з питань праці", description:"Онлайн-сервіс для пошуку роботи та підбору персоналу", icon:"Briefcase", url:"https://work.dniprorada.gov.ua/" }
+      ],
+      11: [
+        { id:1, title:"Дніпро Соціальний", description:"Соціальні послуги міста", icon:"Heart", url:"https://socialpolitica.dniprorada.gov.ua/" },
+        { id:2, title:"Субсидії та пільги", description:"Оформлення субсидій та соціальних пільг онлайн", icon:"FileText", url:"https://socialpolitica.dniprorada.gov.ua/services/" },
+        { id:3, title:"Допомога малозабезпеченим", description:"Соціальна підтримка вразливих верств населення", icon:"HeartHandshake", url:"https://socialpolitica.dniprorada.gov.ua/" },
+        { id:4, title:"Центр соціальних служб", description:"Консультації та підтримка сімей, дітей та молоді", icon:"Users", url:"https://socialpolitica.dniprorada.gov.ua/" }
+      ],
+      2: [
+        { id:1, title:"Національне тестування", description:"Онлайн-платформа підготовки учнів", icon:"GraduationCap", url:"https://edu.dniprorada.gov.ua/" },
+        { id:2, title:"MyBook", description:"Безкоштовна онлайн-бібліотека з підручниками", icon:"BookOpen", url:"https://mybook.dniprorada.gov.ua/" },
+        { id:3, title:"Онлайн-курси «єДніпро»", description:"Платформа освітніх курсів", icon:"GraduationCap", url:"https://course.ednipro.dp.ua/" },
+        { id:4, title:"Дошкільнятко", description:"Освітні програми та ігри", icon:"BookOpen", url:"https://sadok.dniprorada.gov.ua/" },
+        { id:5, title:"Освітня траєкторія", description:"Професійний розвиток освітян", icon:"GraduationCap", url:"https://otd.dniprorada.gov.ua/" },
+        { id:6, title:"Освіта Дніпра", description:"Школи, садочки, учнівський квиток", icon:"GraduationCap", url:"https://osvita.dniprorada.gov.ua/school/enrollment" },
+        { id:7, title:"Онлайн-заява для учнів та вчителів щодо відновлення перепусток", description:"", icon:"FileText", url:"https://anketa.dniprorada.gov.ua/" },
+        { id:8, title:"Дніпро Гуманітарний", description:"", icon:"FileText", url:"https://humpolitic.dniprorada.gov.ua/" }
+      ],
+      3: [
+        { id:1, title:"Лікарі 24/7", description:"Онлайн-запис до лікаря", icon:"Heart", url:"https://likari.in.ua/" },
+        { id:2, title:"Helsi.me", description:"Електронна медична система", icon:"Heart", url:"https://helsi.me/" },
+        { id:3, title:"Запис до лікаря через мобільний додаток «єДніпро»", description:"", icon:"Heart", url:"https://ednipro.dniprorada.gov.ua/" }
+      ],
+      4: [
+        { id:1, title:"Електротранспорт", description:"Розклад руху та тарифи", icon:"Bus", url:"https://t7t.mais-studio.site/" },
+        { id:2, title:"Д-ТРАНСПОРТ", description:"Додаток для онлайн відображення рухомого складу на маршрутах міста для пасажирів", icon:"Map", url:"https://d-transport.dp.ua/" },
+        { id:3, title:"UNIP", description:"Мобільна оплата паркування", icon:"CreditCard", url:"https://apps.apple.com/ua/app/unip-%D0%BF%D0%B0%D1%80%D0%BA%D1%83%D0%B9%D1%81%D1%8F-%D0%B1%D0%B5%D0%B7-%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC/id1160778590?l=ru" },
+        { id:4, title:"Оплата проїзду через мобільний додаток «єДніпро»", description:"", icon:"CreditCard", url:"https://ednipro.dniprorada.gov.ua/" },
+        { id:5, title:"Інспекція з питань контролю за паркуванням", description:"Особистий кабінет водія, послуги з перевірки та оплати штрафів за паркування", icon:"Briefcase", url:"https://ipkp.dniprorada.gov.ua/" },
+        { id:6, title:"Мобільний додаток Parking Dnipro", description:"Безготівкова оплата паркування в м. Дніпро, придбання абонементів", icon:"CreditCard", url:"https://apps.apple.com/ua/app/parking-dnipro/id1552267766" }
+      ],
+      5: [
+        { id:1, title:"Програма допомоги від держави «єВідновлення»", description:"Державна програма підтримки", icon:"HeartHandshake", url:"https://erecovery.diia.gov.ua/" },
+        { id:2, title:"Програма допомоги від міста", description:"Міська програма підтримки", icon:"Heart", url:"https://socialpolitica.dniprorada.gov.ua/services/kompensatsiya-za-poshkodzhene-zhytlo/" },
+        { id:3, title:"Внутрішньо переміщеним особам", description:"Допомога ВПО", icon:"Users", url:"https://socialpolitica.dniprorada.gov.ua/rozdil/sotsialna-posluga-vnutrishno-peremishhenim-osobam/" },
+        { id:4, title:"Підтримка ветеранів та їх сімей", description:"Програми для ветеранів", icon:"Shield", url:"https://www.facebook.com/profile.php?id=61573948237752&rdid=sTVRfkRBKsMbwPgE&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14UrjBdW5PC#" },
+        { id:5, title:"«Родина Героя»", description:"Підтримка родин захисників", icon:"Heart", url:"https://socialpolitica.dniprorada.gov.ua/rozdil/sotsialna-posluga-za-programoyu-rodina-geroya/" },
+        { id:6, title:"Співфінансування проєктів на допомогу ЗСУ", description:"Підтримка ЗСУ", icon:"Shield", url:"https://dniprorada.gov.ua/uk/page/programa-spivfinansuvannya-proektiv-na-dopomogu-silam-bezpeki-i-oboroni-ukraini#gsc.tab=0" },
+        { id:7, title:"Форпост Дніпро", description:"Волонтерська платформа", icon:"HeartHandshake", url:"https://forpost.dniprorada.gov.ua/" }
+      ],
+      6: [
+        { id:1, title:"Меморіальна платформа «Війна»", description:"Вшанування пам'яті загиблих", icon:"BookMarked", url:"https://memory.dp.ua/" }
+      ],
+      7: [
+        { id:1, title:"Культурна спадщина Дніпра", description:"Історико-культурні пам'ятки міста", icon:"Theater", url:"https://heritage.dniprorada.gov.ua/poslugy/" },
+        { id:2, title:"Музей історії Дніпра", description:"Експозиції та виставки", icon:"Building2", url:"https://midnipro.museum/" }
+      ],
+      8: [
+        { id:1, title:"Мапа укриттів", description:"Швидкий пошук найближчого сховища", icon:"MapPin", url:"https://dniprotransparentcities.github.io/shelter/" },
+        { id:2, title:"Мапа пунктів незламності", description:"Знайти локацію поруч", icon:"MapPin", url:"https://dniprotransparentcities.github.io/InvincibilityPoints/" },
+        { id:3, title:"Мапа безбар'єрності", description:"Доступність міського простору", icon:"Map", url:"https://lun.ua/misto/barrier-free/mindev-2025?region=4#9.65/48.4861/34.9657" },
+        { id:4, title:"Відкрита мапа Дніпра", description:"", icon:"Map", url:"https://mapa.dniprorada.gov.ua" },
+        { id:5, title:"Перейменування вулиць", description:"Нові назви вулиць Дніпра", icon:"FileText", url:"https://rename.dp.ua/#/" }
+      ],
+      9: [
+        { id:1, title:"Держгеокадастр", description:"Електронні сервіси земельного кадастру", icon:"Map", url:"https://e.land.gov.ua/services" },
+        { id:2, title:"Збірник проєктів міста", description:"Інвестиційні можливості Дніпра", icon:"FileText", url:"https://drive.google.com/file/d/13stXK_ocCd-3gIPa2P1dbSA_beBdjlT0/view?usp=sharing" },
+        { id:3, title:"Агентство розвитку Дніпра", description:"Підтримка інвесторів та бізнесу", icon:"Briefcase", url:"https://dda.dp.ua/" }
+      ],
+      10: [
+        { id:1, title:"Канали повідомлення", description:"Як повідомити про корупцію", icon:"Shield", url:"https://dniprorada.gov.ua/uk/page/povidomiti-pro-korupciyu#gsc.tab=0" },
+        { id:2, title:"Онлайн-форма повідомлення про корупцію", description:"Подати повідомлення онлайн", icon:"Mail", url:"https://dmr.dp.ua/dp-corruption/" },
+        { id:3, title:"Анонімне повідомлення про корупцію", description:"Анонімне повідомлення", icon:"Mail", url:"https://dmr.dp.ua/dp-corruption-anonim/" }
+      ]
+    };
+
+    // State
+    var selectedCategory = null;
+    var searchQuery = "";
+    var isSearching = false;
+
+    function getAllServices() {
+      var all = [];
+      var seen = {};
+      Object.keys(servicesByCategory).forEach(function(key) {
+        servicesByCategory[key].forEach(function(s) {
+          if (!seen[s.title]) {
+            seen[s.title] = true;
+            all.push(Object.assign({}, s, { categoryId: key === "popular" ? "popular" : parseInt(key) }));
+          }
+        });
+      });
+      return all;
+    }
+
+    function getCategoryColor(catId) {
+      if (!catId || catId === "popular") return { glowColor:"rgba(59,130,246,0.25)", borderColor:"rgba(96,165,250,0.3)", iconHex:"#3b82f6" };
+      var cat = categories.find(function(c) { return c.id === catId; });
+      if (!cat) return { glowColor:"rgba(59,130,246,0.25)", borderColor:"rgba(96,165,250,0.3)", iconHex:"#3b82f6" };
+      return { glowColor: cat.glowColor, borderColor: cat.borderColor, iconHex: cat.iconHex };
+    }
+
+    function renderCategories() {
+      var grid = document.getElementById("categoriesGrid");
+      grid.innerHTML = "";
+      categories.forEach(function(cat) {
+        var card = document.createElement("div");
+        var isSelected = selectedCategory === cat.id;
+        card.className = "category-card" + (isSelected ? " selected" : "");
+        card.style.borderColor = cat.borderColor;
+        if (isSelected) {
+          card.style.background = cat.selectedBg;
+          card.style.boxShadow = "0 0 0 3px " + cat.borderColor + ", 0 8px 32px " + cat.glowColor;
+          card.style.transform = "translateY(-6px) scale(1.03)";
+        }
+
+        var imgWrap = '<div class="category-card-image-wrap"><img src="' + cat.image + '" alt="' + cat.title + '"';
+        var imgStyle = '';
+        if (cat.imageScale || cat.imageShift) {
+          imgStyle += 'transform:';
+          if (cat.imageScale) imgStyle += ' scale(' + cat.imageScale + ')';
+          if (cat.imageShift) imgStyle += ' translateY(' + cat.imageShift + ')';
+          imgStyle += ';';
+        }
+        if (cat.imagePosition) imgStyle += 'object-position:' + cat.imagePosition + ';';
+        if (imgStyle) imgWrap += ' style="' + imgStyle + '"';
+        imgWrap += '></div>';
+
+        card.innerHTML = imgWrap +
+          '<div class="category-card-bottom">' +
+            '<h3 class="category-card-title" lang="uk">' + cat.title + '</h3>' +
+            '<span class="category-card-arrow">' + ICONS.ChevronRight + '</span>' +
+          '</div>';
+
+        card.addEventListener("mouseenter", function() {
+          if (selectedCategory !== cat.id) {
+            card.style.boxShadow = "0 20px 25px -5px " + cat.glowColor + ", 0 0 15px " + cat.glowColor;
+          }
+        });
+        card.addEventListener("mouseleave", function() {
+          if (selectedCategory !== cat.id) {
+            card.style.boxShadow = "0 4px 6px -1px rgba(0,0,0,0.1)";
+          }
+        });
+        card.addEventListener("click", function() {
+          handleCategoryClick(cat.id);
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+    function renderServices() {
+      var services;
+      var catColor;
+      if (isSearching && searchQuery.trim()) {
+        services = getAllServices().filter(function(s) {
+          var q = searchQuery.toLowerCase();
+          return s.title.toLowerCase().indexOf(q) !== -1 || s.description.toLowerCase().indexOf(q) !== -1;
+        });
+        catColor = getCategoryColor(null);
+      } else if (selectedCategory) {
+        services = servicesByCategory[selectedCategory] || [];
+        catColor = getCategoryColor(selectedCategory);
+      } else {
+        services = servicesByCategory.popular;
+        catColor = getCategoryColor(null);
+      }
+
+      var title;
+      if (isSearching) {
+        title = 'Результати пошуку "' + searchQuery + '"';
+      } else if (selectedCategory) {
+        var cat = categories.find(function(c) { return c.id === selectedCategory; });
+        title = cat ? cat.title : "Популярне";
+      } else {
+        title = "Популярне";
+      }
+
+      document.getElementById("servicesTitle").textContent = title;
+
+      var backBtn = document.getElementById("backButton");
+      if (selectedCategory !== null || isSearching) {
+        backBtn.classList.add("visible");
+      } else {
+        backBtn.classList.remove("visible");
+      }
+
+      var grid = document.getElementById("servicesGrid");
+      grid.innerHTML = "";
+
+      if (services.length === 0) {
+        grid.innerHTML = '<div class="empty-state">' + ICONS.Search + '<p>Нічого не знайдено</p><p class="sub">Спробуйте змінити пошуковий запит</p></div>';
+        return;
+      }
+
+      services.forEach(function(service, index) {
+        var card = document.createElement("a");
+        card.className = "service-card";
+        card.href = service.url || "#";
+        if (service.url) {
+          card.target = "_blank";
+          card.rel = "noopener noreferrer";
+        }
+        card.style.borderColor = catColor.borderColor;
+        card.style.animation = "fadeInUp 0.3s ease both";
+        card.style.animationDelay = (index * 50) + "ms";
+
+        var iconSvg = ICONS[service.icon] || ICONS.FileText;
+
+        card.innerHTML =
+          '<div class="service-card-icon"><span style="color:' + catColor.iconHex + '">' + iconSvg + '</span></div>' +
+          '<div class="service-card-content">' +
+            '<h3 class="service-card-title">' + service.title + '</h3>' +
+            (service.description ? '<p class="service-card-desc line-clamp-2">' + service.description + '</p>' : '') +
+          '</div>' +
+          '<span class="service-card-arrow">' + ICONS.ChevronRight + '</span>';
+
+        card.addEventListener("mouseenter", function() {
+          card.style.boxShadow = "0 20px 25px -5px " + catColor.glowColor + ", 0 0 15px " + catColor.glowColor + ", 0 4px 15px rgba(0,0,0,0.12)";
+          card.style.borderColor = catColor.borderColor;
+          card.style.background = "rgba(255,255,255,0.25)";
+          card.style.transform = "translateY(-4px)";
+        });
+        card.addEventListener("mouseleave", function() {
+          card.style.boxShadow = "0 4px 15px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.08)";
+          card.style.borderColor = catColor.borderColor;
+          card.style.background = "rgba(255,255,255,0.15)";
+          card.style.transform = "translateY(0)";
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+    function handleCategoryClick(catId) {
+      selectedCategory = catId;
+      searchQuery = "";
+      isSearching = false;
+      document.getElementById("searchInput").value = "";
+      renderCategories();
+      renderServices();
+
+      setTimeout(function() {
+        var target = document.getElementById("servicesSection");
+        if (target) {
+          var targetPos = target.getBoundingClientRect().top + window.scrollY - 20;
+          var startPos = window.scrollY;
+          var distance = targetPos - startPos;
+          var duration = 800;
+          var startTime = null;
+
+          function easeInOutCubic(t) {
+            return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+          }
+
+          function anim(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            var elapsed = currentTime - startTime;
+            var progress = Math.min(elapsed / duration, 1);
+            window.scrollTo(0, startPos + distance * easeInOutCubic(progress));
+            if (elapsed < duration) requestAnimationFrame(anim);
+          }
+
+          requestAnimationFrame(anim);
+        }
+      }, 150);
+    }
+
+    function showPopular() {
+      selectedCategory = null;
+      searchQuery = "";
+      isSearching = false;
+      document.getElementById("searchInput").value = "";
+      var catSection = document.getElementById("categoriesSection");
+      catSection.classList.remove("categories-hidden");
+      catSection.classList.add("categories-visible");
+      renderCategories();
+      renderServices();
+    }
+
+    // Search
+    document.getElementById("searchInput").addEventListener("input", function(e) {
+      searchQuery = e.target.value;
+      var catSection = document.getElementById("categoriesSection");
+      if (searchQuery.trim()) {
+        isSearching = true;
+        selectedCategory = null;
+        catSection.classList.add("categories-hidden");
+        catSection.classList.remove("categories-visible");
+      } else {
+        isSearching = false;
+        catSection.classList.remove("categories-hidden");
+        catSection.classList.add("categories-visible");
+      }
+      renderCategories();
+      renderServices();
+    });
+
+    // Search focus
+    var searchWrapper = document.getElementById("searchWrapper");
+    document.getElementById("searchInput").addEventListener("focus", function() {
+      searchWrapper.classList.add("focused");
+    });
+    document.getElementById("searchInput").addEventListener("blur", function() {
+      searchWrapper.classList.remove("focused");
+    });
+
+    // Scroll to top button
+    var scrollTopBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", function() {
+      if (window.scrollY > 400) {
+        scrollTopBtn.classList.add("visible");
+      } else {
+        scrollTopBtn.classList.remove("visible");
+      }
+
+      var footer = document.querySelector("footer");
+      if (footer) {
+        var footerRect = footer.getBoundingClientRect();
+        var windowHeight = window.innerHeight;
+        var buttonHeight = 72;
+        if (footerRect.top < windowHeight) {
+          var overlap = windowHeight - footerRect.top + 24;
+          scrollTopBtn.style.bottom = Math.max(overlap, 100) + "px";
+        } else {
+          scrollTopBtn.style.bottom = "100px";
+        }
+      }
+    });
+
+    // Random glow boxes
+    function generateGlowBoxes() {
+      var container = document.getElementById("glowBoxes");
+      container.innerHTML = "";
+      for (var i = 0; i < 4; i++) {
+        var box = document.createElement("div");
+        box.className = "glow-box anim-single-pulse";
+        var top = Math.random() * 60 + 15;
+        var left = Math.random() * 75 + 10;
+        var size = (Math.random() * 6 + 10) * 4;
+        box.style.top = top + "%";
+        box.style.left = left + "%";
+        box.style.width = size + "px";
+        box.style.height = size + "px";
+        box.style.animationDelay = (i * 2) + "s";
+        container.appendChild(box);
+      }
+    }
+
+    generateGlowBoxes();
+    setInterval(generateGlowBoxes, 10000);
+
+    // Initial render
+    renderCategories();
+    renderServices();
+  </script>
+</body>
+</html>
