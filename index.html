@@ -643,7 +643,7 @@
             <div class="search-wrapper" id="searchWrapper">
               <div class="search-inner">
                 <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                <input type="search" id="searchInput" class="search-input" placeholder="Пошук послуг...">
+                <input type="search" id="searchInput" class="search-input" placeholder="Пошук...">
               </div>
             </div>
           </div>
@@ -740,8 +740,8 @@
     };
 
     var categories = [
-      { id:1, title:"Адміністративні послуги", icon:"FileText", image:"./categories/adminposlug.png", iconHex:"#3b82f6", borderColor:"rgba(96,165,250,0.5)", glowColor:"rgba(59,130,246,0.35)", selectedBg:"rgba(59,130,246,0.15)" },
-      { id:11, title:"Соціальні послуги", icon:"Heart", image:"./categories/poslugi.png", iconHex:"#8b5cf6", borderColor:"rgba(167,139,250,0.5)", glowColor:"rgba(139,92,246,0.35)", selectedBg:"rgba(139,92,246,0.15)" },
+      { id:1, title:"Адміністративні та інші послуги", icon:"FileText", image:"./categories/adminposlug.png", iconHex:"#3b82f6", borderColor:"rgba(96,165,250,0.5)", glowColor:"rgba(59,130,246,0.35)", selectedBg:"rgba(59,130,246,0.15)" },
+      { id:11, title:"Соціальні послуги", icon:"Heart", image:"./categories/poslug.png", iconHex:"#8b5cf6", borderColor:"rgba(167,139,250,0.5)", glowColor:"rgba(139,92,246,0.35)", selectedBg:"rgba(139,92,246,0.15)" },
       { id:2, title:"Освіта та навчання", icon:"GraduationCap", image:"./categories/education.png", iconHex:"#10b981", borderColor:"rgba(52,211,153,0.5)", glowColor:"rgba(16,185,129,0.35)", selectedBg:"rgba(16,185,129,0.15)" },
       { id:3, title:"Медицина", icon:"Heart", image:"./categories/medicine.png", iconHex:"#f97316", borderColor:"rgba(251,146,60,0.5)", glowColor:"rgba(249,115,22,0.35)", selectedBg:"rgba(249,115,22,0.15)" },
       { id:4, title:"Транспорт", icon:"Bus", image:"./categories/transport.png", iconHex:"#14b8a6", borderColor:"rgba(45,212,191,0.5)", glowColor:"rgba(20,184,166,0.35)", selectedBg:"rgba(20,184,166,0.15)" },
@@ -773,9 +773,9 @@
       ],
       11: [
         { id:1, title:"Дніпро Соціальний", description:"Соціальні послуги міста", icon:"Heart", url:"https://socialpolitica.dniprorada.gov.ua/" },
-        { id:2, title:"Субсидії та пільги", description:"Оформлення субсидій та соціальних пільг онлайн", icon:"FileText", url:"https://socialpolitica.dniprorada.gov.ua/services/" },
-        { id:3, title:"Допомога малозабезпеченим", description:"Соціальна підтримка вразливих верств населення", icon:"HeartHandshake", url:"https://socialpolitica.dniprorada.gov.ua/" },
-        { id:4, title:"Центр соціальних служб", description:"Консультації та підтримка сімей, дітей та молоді", icon:"Users", url:"https://socialpolitica.dniprorada.gov.ua/" }
+        { id:2, title:"Мінсоцполітики", description:"Електронні сервіси підтримки від держави", icon:"FileText", url:"https://www.msp.gov.ua/" },
+        { id:3, title:"Пенсійний фонд України", description:"Портал електронних послуг", icon:"HeartHandshake", url:"https://portal.pfu.gov.ua/" },
+        { id:4, title:"Безкоштовне протезування кінцівок", description:"Реабілітація для військових та цивільних", icon:"Users", url:"https://protez.msp.gov.ua/" }
       ],
       2: [
         { id:1, title:"Національне тестування", description:"Онлайн-платформа підготовки учнів", icon:"GraduationCap", url:"https://edu.dniprorada.gov.ua/" },
@@ -801,10 +801,10 @@
         { id:6, title:"Мобільний додаток Parking Dnipro", description:"Безготівкова оплата паркування в м. Дніпро, придбання абонементів", icon:"CreditCard", url:"https://apps.apple.com/ua/app/parking-dnipro/id1552267766" }
       ],
       5: [
-        { id:1, title:"Програма допомоги від держави «єВідновлення»", description:"Державна програма підтримки", icon:"HeartHandshake", url:"https://erecovery.diia.gov.ua/" },
+        { id:1, title:"Програма допомоги від держави «єВідновлення»", description:"Державна програма підтримки", icon:"HeartHandshake", url:"https://dniprorada.gov.ua/uk/page/programa-dopomogi-vid-derzhavi-evidnovlennya#gsc.tab=0" },
         { id:2, title:"Програма допомоги від міста", description:"Міська програма підтримки", icon:"Heart", url:"https://socialpolitica.dniprorada.gov.ua/services/kompensatsiya-za-poshkodzhene-zhytlo/" },
-        { id:3, title:"Внутрішньо переміщеним особам", description:"Допомога ВПО", icon:"Users", url:"https://socialpolitica.dniprorada.gov.ua/rozdil/sotsialna-posluga-vnutrishno-peremishhenim-osobam/" },
-        { id:4, title:"Підтримка ветеранів та їх сімей", description:"Програми для ветеранів", icon:"Shield", url:"https://www.facebook.com/profile.php?id=61573948237752&rdid=sTVRfkRBKsMbwPgE&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14UrjBdW5PC#" },
+        { id:3, title:"Внутрішньо переміщеним особам", description:"Допомога ВПО", icon:"Users", url:"https://dniprorada.gov.ua/uk/page/vnutrishno-peremischenim-osobam#gsc.tab=0" },
+        { id:4, title:"Підтримка ветеранів та їх сімей", description:"Програми для ветеранів", icon:"Shield", url:"https://dniprorada.gov.ua/uk/page/pidtrimka-veteraniv-ta-ih-simej#gsc.tab=0" },
         { id:5, title:"«Родина Героя»", description:"Підтримка родин захисників", icon:"Heart", url:"https://socialpolitica.dniprorada.gov.ua/rozdil/sotsialna-posluga-za-programoyu-rodina-geroya/" },
         { id:6, title:"Співфінансування проєктів на допомогу ЗСУ", description:"Підтримка ЗСУ", icon:"Shield", url:"https://dniprorada.gov.ua/uk/page/programa-spivfinansuvannya-proektiv-na-dopomogu-silam-bezpeki-i-oboroni-ukraini#gsc.tab=0" },
         { id:7, title:"Форпост Дніпро", description:"Волонтерська платформа", icon:"HeartHandshake", url:"https://forpost.dniprorada.gov.ua/" }
@@ -820,7 +820,7 @@
         { id:1, title:"Мапа укриттів", description:"Швидкий пошук найближчого сховища", icon:"MapPin", url:"https://dniprotransparentcities.github.io/shelter/" },
         { id:2, title:"Мапа пунктів незламності", description:"Знайти локацію поруч", icon:"MapPin", url:"https://dniprotransparentcities.github.io/InvincibilityPoints/" },
         { id:3, title:"Мапа безбар'єрності", description:"Доступність міського простору", icon:"Map", url:"https://lun.ua/misto/barrier-free/mindev-2025?region=4#9.65/48.4861/34.9657" },
-        { id:4, title:"Відкрита мапа Дніпра", description:"", icon:"Map", url:"https://mapa.dniprorada.gov.ua" },
+        { id:4, title:"Відкрита мапа Дніпра", description:"Єдиний простір міських даних", icon:"Map", url:"https://mapa.dniprorada.gov.ua" },
         { id:5, title:"Перейменування вулиць", description:"Нові назви вулиць Дніпра", icon:"FileText", url:"https://rename.dp.ua/#/" }
       ],
       9: [
