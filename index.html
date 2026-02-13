@@ -631,7 +631,7 @@
               <a href="https://dniprorada.gov.ua/" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-primary">Дніпровська міська рада</a>
               <a href="https://ednipro.dniprorada.gov.ua/" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-glass">Завантажити єДніпро</a>
               <a href="https://inforada.github.io/safecity/" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-glass">Безпечне місто</a>
-              <a href="https://hotline.dniprorada.gov.ua/" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-glass">Контакт-Центр</a>
+              
             </div>
           </div>
         </section>
@@ -745,22 +745,25 @@
       { id:3, title:"Медицина", icon:"Heart", image:"./categories/medicine.png", iconHex:"#f97316", borderColor:"rgba(251,146,60,0.5)", glowColor:"rgba(249,115,22,0.35)", selectedBg:"rgba(249,115,22,0.15)" },
       { id:4, title:"Транспорт", icon:"Bus", image:"./categories/transport.png", iconHex:"#14b8a6", borderColor:"rgba(45,212,191,0.5)", glowColor:"rgba(20,184,166,0.35)", selectedBg:"rgba(20,184,166,0.15)" },
       { id:5, title:"Підтримка під час війни", icon:"HeartHandshake", image:"./categories/war.png", iconHex:"#ef4444", borderColor:"rgba(248,113,113,0.5)", glowColor:"rgba(239,68,68,0.35)", selectedBg:"rgba(239,68,68,0.15)" },
-      { id:6, title:"Пам'ять", icon:"BookMarked", image:"./categories/pamiat.png", iconHex:"#ec4899", borderColor:"rgba(244,114,182,0.5)", glowColor:"rgba(236,72,153,0.35)", selectedBg:"rgba(236,72,153,0.15)" },
-      { id:7, title:"Культура", icon:"Theater", image:"./categories/culture.png", iconHex:"#f59e0b", borderColor:"rgba(245,158,11,0.5)", glowColor:"rgba(245,158,11,0.35)", selectedBg:"rgba(245,158,11,0.15)" },
+      { id:12, title:"Звернення громадян", icon:"HeartHandshake", image:"./categories/zvergrom.png", iciconHex:"#f97316", borderColor:"rgba(251,146,60,0.5)", glowColor:"rgba(249,115,22,0.35)", selectedBg:"rgba(249,115,22,0.15)" },
+      
+      
       { id:8, title:"Мапи і довідники", icon:"MapPin", image:"./categories/maps.png", iconHex:"#22c55e", borderColor:"rgba(74,222,128,0.5)", glowColor:"rgba(34,197,94,0.35)", selectedBg:"rgba(34,197,94,0.15)" },
       { id:9, title:"Бізнес", icon:"Briefcase", image:"./categories/business.png", iconHex:"#06b6d4", borderColor:"rgba(34,211,238,0.5)", glowColor:"rgba(6,182,212,0.35)", selectedBg:"rgba(6,182,212,0.15)" },
-      { id:10, title:"Повідомити про корупцію", icon:"Shield", image:"./categories/corupcia.png", iconHex:"#a855f7", borderColor:"rgba(168,85,247,0.5)", glowColor:"rgba(168,85,247,0.35)", selectedBg:"rgba(168,85,247,0.15)" }
+      { id:10, title:"Повідомити про корупцію", icon:"Shield", image:"./categories/corupcia.png", iconHex:"#a855f7", borderColor:"rgba(168,85,247,0.5)", glowColor:"rgba(168,85,247,0.35)", selectedBg:"rgba(168,85,247,0.15)" },
+	  { id:7, title:"Культура", icon:"Theater", image:"./categories/culture.png", iconHex:"#f59e0b", borderColor:"rgba(245,158,11,0.5)", glowColor:"rgba(245,158,11,0.35)", selectedBg:"rgba(245,158,11,0.15)" },
+	  { id:6, title:"Пам'ять", icon:"BookMarked", image:"./categories/pamiat.png", iconHex:"#ec4899", borderColor:"rgba(244,114,182,0.5)", glowColor:"rgba(236,72,153,0.35)", selectedBg:"rgba(236,72,153,0.15)" }
     ];
 
     var servicesByCategory = {
       popular: [
         { id:1, title:"єДніпро", description:"Усі міські сервіси в одному мобільному застосунку", icon:"Building2", url:"https://ednipro.dniprorada.gov.ua/" },
         { id:2, title:"Безпечне місто", description:"Моніторинг 24/7, запит на відео з камер спостереження", icon:"Shield", url:"https://inforada.github.io/safecity/" },
-        { id:3, title:"Контакт-Центр міста Дніпра", description:"Єдина система звернень щодо аварійних ситуацій", icon:"Phone", url:"https://hotline.dniprorada.gov.ua/" },
+        
         { id:4, title:"Мапа укриттів", description:"Швидкий пошук найближчого сховища", icon:"MapPin", url:"https://dniprotransparentcities.github.io/shelter/" },
         { id:5, title:"Мапа пунктів незламності", description:"Знайти локацію поруч за кілька кліків", icon:"MapPin", url:"https://dniprotransparentcities.github.io/InvincibilityPoints/" },
         { id:6, title:"Документи міської ради", description:"Пошук проєктів та прийнятих документів", icon:"FileText", url:"https://dniprorada.gov.ua/uk/page/dokumenti-miskoi-radi#gsc.tab=0" },
-        { id:7, title:"Електронні звернення", description:"Подати звернення онлайн", icon:"Mail", url:"https://gromada.dniprorada.gov.ua/" },
+        
         { id:8, title:"Онлайн реєстрація на сесію міської ради", description:"Реєстрація для участі в засіданнях", icon:"Users", url:"https://rada.dniprorada.gov.ua/" },
         { id:9, title:"Портал відкритих даних", description:"Доступ до відкритих даних міста", icon:"FileText", url:"https://data.dniprorada.gov.ua/" }
       ],
@@ -768,13 +771,48 @@
         { id:1, title:"ЦНАП м. Дніпра", description:"Адміністративні послуги онлайн", icon:"Building2", url:"https://cnap.dniprorada.gov.ua/online-services/" },
         { id:2, title:"Електронна черга", description:"Запис до ЦНАП", icon:"Clock", url:"https://dniprorada.qsolutions.com.ua:47502/index" },
         { id:3, title:"Ритуальні послуги", description:"Реєстрація місця поховання", icon:"FileText", url:"https://ritual.dniprorada.gov.ua/#bron" },
-        { id:4, title:"Інспекція з питань праці", description:"Онлайн-сервіс для пошуку роботи та підбору персоналу", icon:"Briefcase", url:"https://work.dniprorada.gov.ua/" }
+        { id:4, title:"Інспекція з питань праці", description:"Онлайн-сервіс для пошуку роботи та підбору персоналу", icon:"Briefcase", url:"https://work.dniprorada.gov.ua/" },
+		{ id:5, title:"Земельні та кадастрові послуги", description:"", icon:"FileText", url:"https://e.land.gov.ua/services" },
+		{ id:6, title:"Витяг про місце проживання", description:"", icon:"FileText", url:"https://diia.gov.ua/services/vityag-z-reyestru-teritorialnoyi-gromadi" },
+		{ id:7, title:"Зняття з місця проживання", description:"", icon:"FileText", url:"https://diia.gov.ua/services/znyattya-iz-zareyestrovanogo-miscya-prozhivannya" },
+		{ id:8, title:"Актуалізація даних у Реєстрі територіальної громади", description:"", icon:"FileText", url:"https://diia.gov.ua/services/aktualizaciya-danih-u-reyestri-teritorialnoyi-gromadi" },
+		{ id:9, title:"Інформація з Державного реєстру речових прав на нерухоме майно", description:"", icon:"FileText", url:"https://diia.gov.ua/services/informaciya-z-derzhavnogo-reyestru-rechovih-prav-na-neruhome-majno" },
+		{ id:10, title:"Державна реєстрація прав на нерухоме майно", description:"", icon:"FileText", url:"https://diia.gov.ua/services/derzhavna-reyestaciya-prav-na-neruhome-majno" },
+		{ id:11, title:"Витяг про несудимість", description:"", icon:"FileText", url:"https://diia.gov.ua/services/vityag-pro-nesudimist" },
+		{ id:12, title:"Відновлення та обмін посвідчення водія", description:"", icon:"Bus", url:"https://e-driver.mvs.gov.ua/blog" },
+		{ id:13, title:"Декларація про готовність до експлуатації самочинно збудованих об'єктів (СС1)", description:"", icon:"FileText", url:"https://diia.gov.ua/services/deklaraciya-pro-gotovnist-do-ekspluataciyi-samochinno-zbudovanih-obyektiv-na-zemelnij-dilyanci-vidpovidnogo-cilovogo-priznachennya" },
+		{ id:14, title:"Декларація про готовність до експлуатації за рішенням суду", description:"", icon:"FileText", url:"https://diia.gov.ua/services/deklaraciya-pro-gotovnist-do-ekspluataciyi-za-rishennyam-sudu" },
+		{ id:15, title:"Надання, внесення змін або скасування містобудівних умов", description:"", icon:"FileText", url:"https://diia.gov.ua/services/zayava-na-nadannya-mistobudivnih-umov-ta-obmezhen-zabudovi-zemelnoyi-dilyanki" },
+		{ id:16, title:"Видача будівельного паспорта або внесення змін у виданий будівельний паспорт", description:"", icon:"FileText", url:"https://diia.gov.ua/services/vidacha-budivelnogo-pasporta" },
+		{ id:17, title:"Повідомлення про початок підготовчих робіт або внесення змін в зареєстроване повідомлення", description:"", icon:"FileText", url:"https://diia.gov.ua/services/povidomlennya-pro-pochatok-pidgotovchih-robit" },
+		{ id:18, title:"Повідомлення про початок будівельних робіт на підставі будівельного паспорта або подання змін до зареєстрованого повідомлення", description:"", icon:"FileText", url:"https://diia.gov.ua/services/povidomlennya-pro-pochatok-budivelnih-robit" },
+		{ id:19, title:"Повідомлення про початок будівельних робіт СС1 або внесення змін у зареєстроване повідомлення", description:"", icon:"FileText", url:"https://diia.gov.ua/services/povidomlennya-pro-pochatok-budivelnih-robit-ss1" },
+		{ id:20, title:"Декларація про готовність обʼєкта до експлуатації на підставі будівельного паспорта або подання змін до зареєстрованої декларації", description:"", icon:"FileText", url:"https://diia.gov.ua/services/deklaraciya-pro-gotovnist-obyektu-do-ekspluataciyi" },
+		{ id:21, title:"єМалятко", description:"", icon:"Clock", url:"https://diia.gov.ua/services/yemalyatko" },
+		{ id:22, title:"Витяг про зміну імені", description:"", icon:"FileText", url:"https://diia.gov.ua/services/vityag-pro-zminu-imeni" },
+		{ id:23, title:"Витяг про місце народження", description:"", icon:"FileText", url:"https://diia.gov.ua/services/vityag-pro-narodzhennya" },
+		{ id:24, title:"Витяг про розірвання шлюбу", description:"", icon:"FileText", url:"https://diia.gov.ua/services/vityag-pro-rozirvannya-shlyubu" },
+		{ id:25, title:"Витяг про смерть", description:"", icon:"FileText", url:"https://diia.gov.ua/services/vityag-pro-smert" },
+		{ id:26, title:"Витяг про шлюб", description:"", icon:"FileText", url:"https://diia.gov.ua/services/vityag-pro-shlyub" },
+		{ id:27, title:"Заява на шлюб", description:"", icon:"FileText", url:"https://diia.gov.ua/services/zayava-na-shlyub" },
+		{ id:28, title:"Повторна видача свідоцтва про зміну імені", description:"", icon:"FileText", url:"https://diia.gov.ua/services/povtorna-vidacha-svidoctva-pro-zminu-imeni" },
+		{ id:29, title:"Повторна видача свідоцтва про смерть", description:"", icon:"FileText", url:"https://diia.gov.ua/services/povtorna-vidacha-svidoctva-pro-smert" },
+		{ id:30, title:"Повторна видача свідоцтва про розірвання шлюбу", description:"", icon:"FileText", url:"https://diia.gov.ua/services/povtorna-vidacha-svidoctva-pro-rozirvannya-shlyubu" },
+		{ id:31, title:"Повторна видача свідоцтва про шлюб", description:"", icon:"FileText", url:"https://diia.gov.ua/services/povtorna-vidacha-svidoctva-pro-reyestraciyu-shlyubu" },
+		{ id:32, title:"Повторна видача свідоцтва про народження", description:"", icon:"FileText", url:"https://diia.gov.ua/services/povtorna-vidacha-svidoctva-pro-narodzhennya" }
+		
       ],
       11: [
         { id:1, title:"Дніпро Соціальний", description:"Соціальні послуги міста", icon:"Heart", url:"https://socialpolitica.dniprorada.gov.ua/" },
-        { id:2, title:"Мінсоцполітики", description:"Електронні сервіси підтримки від держави", icon:"FileText", url:"https://www.msp.gov.ua/" },
-        { id:3, title:"Пенсійний фонд України", description:"Портал електронних послуг", icon:"HeartHandshake", url:"https://portal.pfu.gov.ua/" },
-        { id:4, title:"Безкоштовне протезування кінцівок", description:"Реабілітація для військових та цивільних", icon:"Users", url:"https://protez.msp.gov.ua/" }
+        { id:2, title:"Соціальний портал Мінсоцполітики", description:"Електронні сервіси підтримки від держави", icon:"FileText", url:"https://www.msp.gov.ua/" },
+        { id:3, title:"Електронний кабінет особи з інвалідністю", description:"Звернення щодо забезпечення, ремонту засобу реабілітації та оновлення документів онлайн", icon:"Users", url:"https://ek-cbi.msp.gov.ua" },
+		{ id:4, title:"Пенсійний фонд України", description:"Портал електронних послуг", icon:"HeartHandshake", url:"https://portal.pfu.gov.ua/" },
+        { id:5, title:"Безкоштовне протезування кінцівок", description:"Безкоштовні протези та інші засоби реабілітації", icon:"Users", url:"https://protez.msp.gov.ua/" },
+        { id:6, title:"Встановлення статусу члена сім’ї загиблого (померлого) Захисника чи Захисниці України", description:"", icon:"FileText", url:"https://diia.gov.ua/services/status-chlena-simi-zahybloho-pomerloho-veterana-viiny " },
+		{ id:7, title:"Реєстрація безробітних у службі зайнятості", description:"", icon:"FileText", url:"https://diia.gov.ua/services/otrimannya-statusu-bezrobitnogo" },
+		{ id:8, title:"Виплата грошової компенсації вартості за самостійно придбані засоби реабілітації", description:"", icon:"FileText", url:"https://ek-cbi.msp.gov.ua/" },
+		{ id:9, title:"Забезпечення допоміжними засобами реабілітації осіб, дітей з інвалідністю та інших категорій населення", description:"", icon:"FileText", url:"https://ek-cbi.msp.gov.ua/" },
+		{ id:10, title:"Сервіс онлайн консультування «Інтерактивний інспектор»", description:"", icon:"FileText", url:"http://surl.li/ejjaf" }
       ],
       2: [
         { id:1, title:"Національне тестування", description:"Онлайн-платформа підготовки учнів", icon:"GraduationCap", url:"https://edu.dniprorada.gov.ua/" },
@@ -784,7 +822,8 @@
         { id:5, title:"Освітня траєкторія", description:"Професійний розвиток освітян", icon:"GraduationCap", url:"https://otd.dniprorada.gov.ua/" },
         { id:6, title:"Освіта Дніпра", description:"Школи, садочки, учнівський квиток", icon:"GraduationCap", url:"https://osvita.dniprorada.gov.ua/school/enrollment" },
         { id:7, title:"Онлайн-заява для учнів та вчителів щодо відновлення перепусток", description:"", icon:"FileText", url:"https://anketa.dniprorada.gov.ua/" },
-        { id:8, title:"Дніпро Гуманітарний", description:"", icon:"FileText", url:"https://humpolitic.dniprorada.gov.ua/" }
+        { id:8, title:"Дніпро Гуманітарний", description:"", icon:"FileText", url:"https://humpolitic.dniprorada.gov.ua/" },
+        { id:9, title:"Вступ поза конкурсом до державних та комунальних закладів вищої та фахової передвищої освіти", description:"", icon:"FileText", url:"https://vstup.edbo.gov.ua/ " }
       ],
       3: [
         { id:1, title:"Лікарі 24/7", description:"Онлайн-запис до лікаря", icon:"Heart", url:"https://likari.in.ua/" },
@@ -792,12 +831,14 @@
         { id:3, title:"Запис до лікаря через мобільний додаток «єДніпро»", description:"", icon:"Heart", url:"https://ednipro.dniprorada.gov.ua/" }
       ],
       4: [
-        { id:1, title:"Електротранспорт", description:"Розклад руху та тарифи", icon:"Bus", url:"https://t7t.mais-studio.site/" },
+        { id:1, title:"Дніпровський електротранспорт", description:"Розклад руху та тарифи", icon:"Bus", url:"https://det.dniprorada.gov.ua" },
         { id:2, title:"Д-ТРАНСПОРТ", description:"Додаток для онлайн відображення рухомого складу на маршрутах міста для пасажирів", icon:"Map", url:"https://d-transport.dp.ua/" },
-        { id:3, title:"UNIP", description:"Мобільна оплата паркування", icon:"CreditCard", url:"https://apps.apple.com/ua/app/unip-%D0%BF%D0%B0%D1%80%D0%BA%D1%83%D0%B9%D1%81%D1%8F-%D0%B1%D0%B5%D0%B7-%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC/id1160778590?l=ru" },
+        
         { id:4, title:"Оплата проїзду через мобільний додаток «єДніпро»", description:"", icon:"CreditCard", url:"https://ednipro.dniprorada.gov.ua/" },
         { id:5, title:"Інспекція з питань контролю за паркуванням", description:"Особистий кабінет водія, послуги з перевірки та оплати штрафів за паркування", icon:"Briefcase", url:"https://ipkp.dniprorada.gov.ua/" },
-        { id:6, title:"Мобільний додаток Parking Dnipro", description:"Безготівкова оплата паркування в м. Дніпро, придбання абонементів", icon:"CreditCard", url:"https://apps.apple.com/ua/app/parking-dnipro/id1552267766" }
+        { id:6, title:"Мобільний додаток Parking Dnipro", description:"Безготівкова оплата паркування в м. Дніпро, придбання абонементів", icon:"CreditCard", url:"https://apps.apple.com/ua/app/parking-dnipro/id1552267766" },
+		{ id:3, title:"UNIP", description:"Мобільна оплата паркування", icon:"CreditCard", url:"https://apps.apple.com/ua/app/unip-%D0%BF%D0%B0%D1%80%D0%BA%D1%83%D0%B9%D1%81%D1%8F-%D0%B1%D0%B5%D0%B7-%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC/id1160778590?l=ru" },
+		{ id:7, title:"Відновлення та обмін посвідчення водія", description:"", icon:"Bus", url:"https://e-driver.mvs.gov.ua/blog" }
       ],
       5: [
         { id:1, title:"Програма допомоги від держави «єВідновлення»", description:"Державна програма підтримки", icon:"HeartHandshake", url:"https://dniprorada.gov.ua/uk/page/programa-dopomogi-vid-derzhavi-evidnovlennya#gsc.tab=0" },
@@ -806,14 +847,25 @@
         { id:4, title:"Підтримка ветеранів та їх сімей", description:"Програми для ветеранів", icon:"Shield", url:"https://dniprorada.gov.ua/uk/page/pidtrimka-veteraniv-ta-ih-simej#gsc.tab=0" },
         { id:5, title:"«Родина Героя»", description:"Підтримка родин захисників", icon:"Heart", url:"https://socialpolitica.dniprorada.gov.ua/rozdil/sotsialna-posluga-za-programoyu-rodina-geroya/" },
         { id:6, title:"Співфінансування проєктів на допомогу ЗСУ", description:"Підтримка ЗСУ", icon:"Shield", url:"https://dniprorada.gov.ua/uk/page/programa-spivfinansuvannya-proektiv-na-dopomogu-silam-bezpeki-i-oboroni-ukraini#gsc.tab=0" },
-        { id:7, title:"Форпост Дніпро", description:"Волонтерська платформа", icon:"HeartHandshake", url:"https://forpost.dniprorada.gov.ua/" }
+        { id:7, title:"Форпост Дніпро", description:"Допомога Силам оборони України від дніпрян", icon:"HeartHandshake", url:"https://forpost.dniprorada.gov.ua/" },
+        { id:8, title:"Пошкоджене майно", description:"", icon:"HeartHandshake", url:"https://diia.gov.ua/services/poshkodzhene-majno" },
+		{ id:9, title:"Повідомити про пошкоджене майно", description:"", icon:"FileText", url:"https://diia.gov.ua/services/poshkodzhene-majno" },
+		{ id:10, title:"Компенсація за пошкоджене або знищене майно", description:"", icon:"FileText", url:"https://diia.gov.ua/services/kompensaciya-za-poshkodzhene-majno" },
+		{ id:11, title:"Репарації: міжнародний. Реєстр збитків", description:"", icon:"FileText", url:"https://www.rd4u.coe.int/uk/home" },
+		{ id:12, title:"Встановлення статусу члена сім’ї загиблого (померлого) Захисника чи Захисниці України", description:"", icon:"FileText", url:"https://diia.gov.ua/services/status-chlena-simi-zahybloho-pomerloho-veterana-viiny " },
+		{ id:13, title:"Реєстрація безробітних у службі зайнятості", description:"", icon:"FileText", url:"https://diia.gov.ua/services/otrimannya-statusu-bezrobitnogo" },
+		{ id:14, title:"Виплата грошової компенсації вартості за самостійно придбані засоби реабілітації", description:"", icon:"FileText", url:"https://ek-cbi.msp.gov.ua/" },
+		{ id:15, title:"Забезпечення допоміжними засобами реабілітації осіб, дітей з інвалідністю та інших категорій населення", description:"", icon:"FileText", url:"https://ek-cbi.msp.gov.ua/" },
       ],
       6: [
         { id:1, title:"Меморіальна платформа «Війна»", description:"Вшанування пам'яті загиблих", icon:"BookMarked", url:"https://memory.dp.ua/" }
       ],
       7: [
         { id:1, title:"Культурна спадщина Дніпра", description:"Історико-культурні пам'ятки міста", icon:"Theater", url:"https://heritage.dniprorada.gov.ua/poslugy/" },
-        { id:2, title:"Музей історії Дніпра", description:"Експозиції та виставки", icon:"Building2", url:"https://midnipro.museum/" }
+        { id:2, title:"Музей історії Дніпра", description:"Експозиції та виставки", icon:"Building2", url:"https://midnipro.museum/" },
+		{ id:3, title:"Туристичний Інформаційний Центр м. Дніпро", description:"", icon:"Theater", url:"https://www.facebook.com/tic.dnipro/?locale=ru_RU" },
+		{ id:4, title:"ДніпроАртСтейдж", description:"Сучасний мультифункціональний артпростір", icon:"Theater", url:"https://www.facebook.com/DniproArtStage/" },
+		{ id:5, title:"Молодіжна мережа ХВИЛЯ", description:"Простір народження нових можливостей", icon:"Building2", url:"https://molod.dp.ua/" },
       ],
       8: [
         { id:1, title:"Мапа укриттів", description:"Швидкий пошук найближчого сховища", icon:"MapPin", url:"https://dniprotransparentcities.github.io/shelter/" },
@@ -825,13 +877,32 @@
       9: [
         { id:1, title:"Держгеокадастр", description:"Електронні сервіси земельного кадастру", icon:"Map", url:"https://e.land.gov.ua/services" },
         { id:2, title:"Збірник проєктів міста", description:"Інвестиційні можливості Дніпра", icon:"FileText", url:"https://drive.google.com/file/d/13stXK_ocCd-3gIPa2P1dbSA_beBdjlT0/view?usp=sharing" },
-        { id:3, title:"Агентство розвитку Дніпра", description:"Підтримка інвесторів та бізнесу", icon:"Briefcase", url:"https://dda.dp.ua/" }
+        { id:3, title:"Агентство розвитку Дніпра", description:"Підтримка інвесторів та бізнесу", icon:"Briefcase", url:"https://dda.dp.ua/" },
+        { id:4, title:"Декларація про відходи", description:"", icon:"FileText", url:"https://diia.gov.ua/services/deklaraciya-pro-vidhodi" },
+        { id:5, title:"Отримання чи анулювання дозволу на спеціальне водокористування", description:"", icon:"FileText", url:"https://diia.gov.ua/services/dozvil-na-vodokoristuvannya" },
+        { id:6, title:"Реєстрація фізичної особи - підприємця", description:"", icon:"FileText", url:"https://diia.gov.ua/services/reyestraciya-fop" },
+        { id:7, title:"Внесення змін до ФОП у Єдиному державному реєстрі", description:"", icon:"FileText", url:"https://diia.gov.ua/services/zminennya-danih-fop" },
+        { id:8, title:"Припинення діяльності фізичної особи-підприємця", description:"", icon:"FileText", url:"https://diia.gov.ua/services/avtomatichne-zakrittya-fop" },
+        { id:9, title:"Перехід юридичної особи на діяльність на підставі модельного статуту", description:"", icon:"FileText", url:"https://diia.gov.ua/services/perehid-tov-na-modelnij-statut" },
+        { id:10, title:"Реєстрація Товариство з обмеженою відповідальністю на підставі модельного статуту", description:"", icon:"FileText", url:"https://diia.gov.ua/services/reyestraciya-tov-na-pidstavi-modelnogo-statutu" },
+        { id:11, title:"Декларація про провадження господарської діяльності під час воєнного стану", description:"", icon:"FileText", url:"https://diia.gov.ua/services/yedeklaraciya" },
+        { id:12, title:"Витяг з ЄДР юридичних осіб, фізичних осіб та громадських формувань", description:"", icon:"FileText", url:"https://diia.gov.ua/services/vityag-z-yedr" },
+        { id:13, title:"Декларація відповідності матеріально-технічної бази вимогам законодавства з питань охорони праці", description:"", icon:"FileText", url:"https://diia.gov.ua/services/deklaratsiia-vidpovidnosti-materialno-tekhnichnoi-bazy-vymoham-zakonodavstva-z-pytan-okhorony-pratsi" },
+        { id:14, title:"Реєстрація декларації з питань пожежної безпеки", description:"", icon:"FileText", url:"https://e-services.dsns.gov.ua/" },
+        { id:15, title:"Реєстрація потужностей оператора ринку", description:"", icon:"FileText", url:"https://diia.gov.ua/services/reyestraciya-potuzhnostej-operatora-rinku" },
+        { id:16, title:"Мікрогрант на розвиток власного бізнесу в рамках державної програми єРобота", description:"", icon:"FileText", url:"https://diia.gov.ua/services/categories/biznesu/yerobota" },
+        { id:17, title:"Портал відкритих даних", description:"", icon:"FileText", url:"https://data.dniprorada.gov.ua/" }
       ],
       10: [
         { id:1, title:"Канали повідомлення", description:"Як повідомити про корупцію", icon:"Shield", url:"https://dniprorada.gov.ua/uk/page/povidomiti-pro-korupciyu#gsc.tab=0" },
         { id:2, title:"Онлайн-форма повідомлення про корупцію", description:"Подати повідомлення онлайн", icon:"Mail", url:"https://dmr.dp.ua/dp-corruption/" },
         { id:3, title:"Анонімне повідомлення про корупцію", description:"Анонімне повідомлення", icon:"Mail", url:"https://dmr.dp.ua/dp-corruption-anonim/" }
-      ]
+      ],
+	  12: [
+        { id:1, title:"Подати електронне звернення до міської ради", description:"", icon:"Mail", url:"https://gromada.dniprorada.gov.ua/" },
+        { id:2, title:"Система Контакт-центр Дніпровської міської ради", description:"", icon:"FileText", url:"https://hotline.dniprorada.gov.ua/" },
+        { id:3, title:"Онлайн-запис на особистий прийом до заступників міського голови", description:"", icon:"FileText", url:"" }
+      ],
     };
 
     // State
