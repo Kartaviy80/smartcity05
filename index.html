@@ -745,11 +745,12 @@
       { id:3, title:"Медицина", icon:"Heart", image:"./categories/medicine.png", iconHex:"#f97316", borderColor:"rgba(251,146,60,0.5)", glowColor:"rgba(249,115,22,0.35)", selectedBg:"rgba(249,115,22,0.15)" },
       { id:4, title:"Транспорт", icon:"Bus", image:"./categories/transport.png", iconHex:"#14b8a6", borderColor:"rgba(45,212,191,0.5)", glowColor:"rgba(20,184,166,0.35)", selectedBg:"rgba(20,184,166,0.15)" },
       { id:5, title:"Підтримка під час війни", icon:"HeartHandshake", image:"./categories/war.png", iconHex:"#ef4444", borderColor:"rgba(248,113,113,0.5)", glowColor:"rgba(239,68,68,0.35)", selectedBg:"rgba(239,68,68,0.15)" },
-      { id:12, title:"Звернення громадян", icon:"HeartHandshake", image:"./categories/zvergrom.png", iciconHex:"#f97316", borderColor:"rgba(251,146,60,0.5)", glowColor:"rgba(249,115,22,0.35)", selectedBg:"rgba(249,115,22,0.15)" },
+      { id:13, title:"Доступ громадян до засідань", icon:"HeartHandshake", image:"./categories/dostup.png", iconHex:"#ec4899", borderColor:"rgba(244,114,182,0.5)", glowColor:"rgba(236,72,153,0.35)", selectedBg:"rgba(236,72,153,0.15)" },
+      { id:12, title:"Звернення громадян", icon:"HeartHandshake", image:"./categories/zvergrom.png", iconHex:"#06b6d4", borderColor:"rgba(34,211,238,0.5)", glowColor:"rgba(6,182,212,0.35)", selectedBg:"rgba(6,182,212,0.15)" },
       
       
       { id:8, title:"Мапи і довідники", icon:"MapPin", image:"./categories/maps.png", iconHex:"#22c55e", borderColor:"rgba(74,222,128,0.5)", glowColor:"rgba(34,197,94,0.35)", selectedBg:"rgba(34,197,94,0.15)" },
-      { id:9, title:"Бізнес", icon:"Briefcase", image:"./categories/business.png", iconHex:"#06b6d4", borderColor:"rgba(34,211,238,0.5)", glowColor:"rgba(6,182,212,0.35)", selectedBg:"rgba(6,182,212,0.15)" },
+      { id:9, title:"Бізнес", icon:"Briefcase", image:"./categories/business.png", iciconHex:"#f97316", borderColor:"rgba(251,146,60,0.5)", glowColor:"rgba(249,115,22,0.35)", selectedBg:"rgba(249,115,22,0.15)" },
       { id:10, title:"Повідомити про корупцію", icon:"Shield", image:"./categories/corupcia.png", iconHex:"#a855f7", borderColor:"rgba(168,85,247,0.5)", glowColor:"rgba(168,85,247,0.35)", selectedBg:"rgba(168,85,247,0.15)" },
 	  { id:7, title:"Культура", icon:"Theater", image:"./categories/culture.png", iconHex:"#f59e0b", borderColor:"rgba(245,158,11,0.5)", glowColor:"rgba(245,158,11,0.35)", selectedBg:"rgba(245,158,11,0.15)" },
 	  { id:6, title:"Пам'ять", icon:"BookMarked", image:"./categories/pamiat.png", iconHex:"#ec4899", borderColor:"rgba(244,114,182,0.5)", glowColor:"rgba(236,72,153,0.35)", selectedBg:"rgba(236,72,153,0.15)" }
@@ -762,14 +763,15 @@
         
         { id:4, title:"Мапа укриттів", description:"Швидкий пошук найближчого сховища", icon:"MapPin", url:"https://dniprotransparentcities.github.io/shelter/" },
         { id:5, title:"Мапа пунктів незламності", description:"Знайти локацію поруч за кілька кліків", icon:"MapPin", url:"https://dniprotransparentcities.github.io/InvincibilityPoints/" },
-        { id:6, title:"Документи міської ради", description:"Пошук проєктів та прийнятих документів", icon:"FileText", url:"https://dniprorada.gov.ua/uk/page/dokumenti-miskoi-radi#gsc.tab=0" },
+        { id:6, title:"Документи Дніпровської міської ради", description:"Пошук проєктів та прийнятих документів", icon:"FileText", url:"https://dniprorada.gov.ua/uk/page/dokumenti-miskoi-radi#gsc.tab=0" },
         
-        { id:8, title:"Онлайн реєстрація на сесію міської ради", description:"Реєстрація для участі в засіданнях", icon:"Users", url:"https://rada.dniprorada.gov.ua/" },
+        { id:8, title:"Онлайн-реєстрація на сесію міської ради", description:"Реєстрація для участі в засіданнях", icon:"Users", url:"https://rada.dniprorada.gov.ua/" },
         { id:9, title:"Портал відкритих даних", description:"Доступ до відкритих даних міста", icon:"FileText", url:"https://data.dniprorada.gov.ua/" }
       ],
       1: [
         { id:1, title:"ЦНАП м. Дніпра", description:"Адміністративні послуги онлайн", icon:"Building2", url:"https://cnap.dniprorada.gov.ua/online-services/" },
         { id:2, title:"Електронна черга", description:"Запис до ЦНАП", icon:"Clock", url:"https://dniprorada.qsolutions.com.ua:47502/index" },
+        { id:33, title:"Електронна черга до ЦНАП через мобільний додаток «єДніпро»", description:"", icon:"Clock", url:"https://ednipro.dniprorada.gov.ua/" },
         { id:3, title:"Ритуальні послуги", description:"Реєстрація місця поховання", icon:"FileText", url:"https://ritual.dniprorada.gov.ua/#bron" },
         { id:4, title:"Інспекція з питань праці", description:"Онлайн-сервіс для пошуку роботи та підбору персоналу", icon:"Briefcase", url:"https://work.dniprorada.gov.ua/" },
 		{ id:5, title:"Земельні та кадастрові послуги", description:"", icon:"FileText", url:"https://e.land.gov.ua/services" },
@@ -823,10 +825,11 @@
         { id:6, title:"Освіта Дніпра", description:"Школи, садочки, учнівський квиток", icon:"GraduationCap", url:"https://osvita.dniprorada.gov.ua/school/enrollment" },
         { id:7, title:"Онлайн-заява для учнів та вчителів щодо відновлення перепусток", description:"", icon:"FileText", url:"https://anketa.dniprorada.gov.ua/" },
         { id:8, title:"Дніпро Гуманітарний", description:"", icon:"FileText", url:"https://humpolitic.dniprorada.gov.ua/" },
-        { id:9, title:"Вступ поза конкурсом до державних та комунальних закладів вищої та фахової передвищої освіти", description:"", icon:"FileText", url:"https://vstup.edbo.gov.ua/ " }
+        { id:9, title:"Вступ поза конкурсом до державних та комунальних закладів вищої та фахової передвищої освіти", description:"", icon:"FileText", url:"https://vstup.edbo.gov.ua/ " },
+        { id:10, title:"Молодіжний простір Дніпра", description:"", icon:"GraduationCap", url:"https://www.instagram.com/molcentrdnipra/" }
       ],
       3: [
-		{ id:3, title:"Запис до лікаря через мобільний додаток «єДніпро»", description:"", icon:"Heart", url:"https://ednipro.dniprorada.gov.ua/" },
+		{ id:3, title:"Медичний кабінет та запис до лікаря через мобільний додаток «єДніпро»", description:"", icon:"Heart", url:"https://ednipro.dniprorada.gov.ua/" },
         { id:1, title:"Лікарі 24/7", description:"Онлайн-запис до лікаря", icon:"Heart", url:"https://likari.in.ua/" },
         { id:2, title:"Helsi.me", description:"Електронна медична система", icon:"Heart", url:"https://helsi.me/" }
       ],
@@ -874,9 +877,10 @@
         { id:5, title:"Перейменування вулиць", description:"Нові назви вулиць Дніпра", icon:"FileText", url:"https://rename.dp.ua/#/" }
       ],
       9: [
-        { id:1, title:"Держгеокадастр", description:"Електронні сервіси земельного кадастру", icon:"Map", url:"https://e.land.gov.ua/services" },
+        
         { id:2, title:"Збірник проєктів міста", description:"Інвестиційні можливості Дніпра", icon:"FileText", url:"https://drive.google.com/file/d/13stXK_ocCd-3gIPa2P1dbSA_beBdjlT0/view?usp=sharing" },
         { id:3, title:"Агентство розвитку Дніпра", description:"Підтримка інвесторів та бізнесу", icon:"Briefcase", url:"https://dda.dp.ua/" },
+		{ id:1, title:"Держгеокадастр", description:"Електронні сервіси земельного кадастру", icon:"Map", url:"https://e.land.gov.ua/services" },
         { id:4, title:"Національна онлайн-платформа ЕкоСистема", description:"Вся екологічна інформація та послуги в один клік", icon:"FileText", url:"https://eco.gov.ua/services" },
         { id:5, title:"Отримання чи анулювання дозволу на спеціальне водокористування", description:"", icon:"FileText", url:"https://diia.gov.ua/services/dozvil-na-vodokoristuvannya" },
         { id:6, title:"Реєстрація фізичної особи - підприємця", description:"", icon:"FileText", url:"https://diia.gov.ua/services/reyestraciya-fop" },
@@ -902,6 +906,14 @@
         { id:2, title:"Система Контакт-центр Дніпровської міської ради", description:"", icon:"FileText", url:"https://hotline.dniprorada.gov.ua/" },
         { id:3, title:"Онлайн-запис на особистий прийом до заступників міського голови", description:"", icon:"FileText", url:"" }
       ],
+      13: [
+		{ id:1, title:"Сесії міської ради", description:"", icon:"Users", url:"https://dniprorada.gov.ua/uk/page/dostup-gromadyan-do-zasidan#gsc.tab=0" },
+        { id:2, title:"Онлайн-реєстрація на сесію міської ради", description:"", icon:"Users", url:"https://rada.dniprorada.gov.ua/" },
+        { id:3, title:"Виконком міської ради. Онлайн-трансляції та протоколи засідань", description:"", icon:"BookOpen", url:"https://dniprorada.gov.ua/uk/page/vikonkom-miskoi-radi#gsc.tab=0" },
+        { id:4, title:"Бюджет Дніпровської територіальної громади", description:"", icon:"BookOpen", url:"https://dniprorada.gov.ua/uk/page/byudzhet" },
+        { id:5, title:"Звіти міського голови Дніпра", description:"", icon:"FileText", url:"https://dniprorada.gov.ua/uk/persons/item/211/filatov-boris-albertovich#gsc.tab=0" },
+        { id:6, title:"Документи Дніпровської міської ради", description:"", icon:"FileText", url:"https://dniprorada.gov.ua/uk/page/dokumenti-miskoi-radi#gsc.tab=0" }
+      ]
     };
 
     // State
