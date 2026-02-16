@@ -752,6 +752,7 @@
       { id:8, title:"Мапи і довідники", icon:"MapPin", image:"./categories/maps.png", iconHex:"#22c55e", borderColor:"rgba(74,222,128,0.5)", glowColor:"rgba(34,197,94,0.35)", selectedBg:"rgba(34,197,94,0.15)" },
       { id:9, title:"Бізнес", icon:"Briefcase", image:"./categories/business.png", iciconHex:"#f97316", borderColor:"rgba(251,146,60,0.5)", glowColor:"rgba(249,115,22,0.35)", selectedBg:"rgba(249,115,22,0.15)" },
       { id:10, title:"Повідомити про корупцію", icon:"Shield", image:"./categories/corupcia.png", iconHex:"#a855f7", borderColor:"rgba(168,85,247,0.5)", glowColor:"rgba(168,85,247,0.35)", selectedBg:"rgba(168,85,247,0.15)" },
+      { id:14, title:"Портал відкритих даних міста Дніпра", icon:"Shield", image:"./categories/portal.png", iconHex:"#ef4444", borderColor:"rgba(248,113,113,0.5)", glowColor:"rgba(239,68,68,0.35)", selectedBg:"rgba(239,68,68,0.15)" },
 	  { id:7, title:"Культура", icon:"Theater", image:"./categories/culture.png", iconHex:"#f59e0b", borderColor:"rgba(245,158,11,0.5)", glowColor:"rgba(245,158,11,0.35)", selectedBg:"rgba(245,158,11,0.15)" },
 	  { id:6, title:"Пам'ять", icon:"BookMarked", image:"./categories/pamiat.png", iconHex:"#ec4899", borderColor:"rgba(244,114,182,0.5)", glowColor:"rgba(236,72,153,0.35)", selectedBg:"rgba(236,72,153,0.15)" }
     ];
@@ -1076,6 +1077,12 @@
     }
 
     function handleCategoryClick(catId) {
+	
+	if (catId === 14) {
+    window.open("https://data.dniprorada.gov.ua/", "_blank");
+    return; // Виходимо з функції, не виконуючи стандартну логіку
+	}
+	
       selectedCategory = catId;
       searchQuery = "";
       isSearching = false;
