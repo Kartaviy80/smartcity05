@@ -180,10 +180,10 @@
     }
 
     /* Hero */
-    .hero-section { position: relative; padding: 3rem 0 1.5rem; }
+    .hero-section { position: relative; padding: 2rem 0 1.5rem; }
     .hero-pill {
       display: inline-block;
-      
+      margin-bottom: 1rem;
       padding: 0.625rem 1.5rem;
       border-radius: 9999px;
       border: 1px solid rgba(255,255,255,0.6);
@@ -608,7 +608,7 @@
 
 .footer-bottom {
   margin-top: 1rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   text-align: center;
@@ -620,6 +620,15 @@
   font-size: 1rem;
   margin: 0;
 }
+.hero-logo {
+  width: clamp(200px, 20vw, 500px); /* Налаштуйте значення під ваш дизайн */
+  height: auto;
+}
+
+.hero-gradient {
+  font-size: clamp(1.75rem, 8vw, 3rem);
+}
+
 
   </style>
 </head>
